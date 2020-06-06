@@ -1,6 +1,6 @@
 # Deep Dimension Reduction for Supervised Representation Learning
 
-This repository is the official implementation of [Deep Dimension Reduction for Supervised Representation Learning]. 
+This repository is the demo implementation of [Deep Dimension Reduction for Supervised Representation Learning]. 
 
 ## Requirements
 
@@ -35,7 +35,7 @@ python eval.py --path 'Results/MNIST' --latent_dim 16
 
 ## Pre-trained Models
 
-DDR does not adopt the pre-trained models. However, to save the time and expense of training, we provied the trained models that can aviod the afresh training. To evaluate DDR on MNIST with trained models, run:
+DDR does not adopt the pre-trained models. However, to save the time and expenses of training, we provide the trained models that can aviod the afresh training. To evaluate DDR on MNIST with trained models, run:
 
 ```eval_trained
 python eval.py --path 'Results/MNIST_trained_16' --latent_dim 16
@@ -49,4 +49,20 @@ Our model DDR achieves the following performance on :
 
 | Reduced Dimension|   16   |   32   |   64   |
 | ---------------- |--------|--------|--------|
-|        DDR       | 99.63% | 99.63% | 99.63% |
+|        DDR       | 99.63% | 99.53% | 99.60% |
+
+With trained models, results can be obtained by running
+
+```eval_trained_all
+python eval.py --path 'Results/MNIST_trained_16' --latent_dim 16
+python eval.py --path 'Results/MNIST_trained_32' --latent_dim 32
+python eval.py --path 'Results/MNIST_trained_64' --latent_dim 64
+```
+With the afresh training, results can be obtained by running
+
+```train_all
+python train.py --save 'Results/MNIST_16' --latent_dim 16
+python train.py --save 'Results/MNIST_32' --latent_dim 16
+python train.py --save 'Results/MNIST_64' --latent_dim 16
+```
+
