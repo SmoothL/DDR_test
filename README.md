@@ -1,6 +1,6 @@
-# Deep Dimension Reduction for Supervised Representation Learning
+# Toward Understanding  Supervised Representation Learning with RKHS and GAN
 
-This repository is the demo implementation of [Deep Dimension Reduction for Supervised Representation Learning]. 
+This repository is the demo implementation of [novel supervised representation learning approach (NSRL)]. 
 
 ## Requirements
 
@@ -10,59 +10,34 @@ To install requirements:
 pip install -r requirements.txt
 ```
 
-## Training
+## Training and evaluation
 
-To train DDR on toy examples, run this command:
+To train NSRL on toy examples to visualize learned features, run this command:
 
 ```train_toys
-python demo_toys.py --save 'Results/toys' --dataset 3
+python simulation/demo.py --save 'simulation/Results/S_curve'
 ```
 
-To train DDR on MNIST dataset and get the evaluation results , run this command:
+To train NSRL on MNIST and Kuzushiji-MNIST dataset and get the evaluation results , run this command:
 
-```train
-python train.py --save 'Results/MNIST' --latent_dim 16
+```train_mnist
+python classification/demo.py --save 'classification/Results/MNIST' --dataset 'mnist' --latent_dim 8
 ```
-
-## Evaluation
-
-To evaluate DDR on MNIST, run:
-
-```eval
-python eval.py --path 'Results/MNIST' --latent_dim 16
-```
-
-
-## Pre-trained Models
-
-DDR does not adopt the pre-trained models. However, to save the time and expenses of training, we provide the trained models that can aviod the afresh training. To evaluate DDR on MNIST with trained models, run:
-
-```eval_trained
-python eval.py --path 'Results/MNIST_trained_16' --latent_dim 16
+```train_kmnist
+python classification/demo.py --save 'classification/Results/KMNIST' --dataset 'kmnist' --latent_dim 8
 ```
 
 ## Results
 
-Our model DDR achieves the following performance on :
+Our model NSRL achieves the following performance on :
 
-### [Image Classification on MNIST]
+### [Image Classification on MNIST and Kuzushiji-MNIST]
 
-| Reduced Dimension|   16   |   32   |   64   |
+| Reduced Dimension|   8   |   16   |   32   |
 | ---------------- |--------|--------|--------|
-|        DDR       | 99.63% | 99.53% | 99.60% |
+|        MNIST       | 99.67% | 99.66% | 99.62% |
+|        Kuzushiji-MNIST       | 98.61% | 98.81% | 98.63% |
 
-With trained models, results can be obtained by running
+### [Trained models]
 
-```eval_trained_all
-python eval.py --path 'Results/MNIST_trained_16' --latent_dim 16
-python eval.py --path 'Results/MNIST_trained_32' --latent_dim 32
-python eval.py --path 'Results/MNIST_trained_64' --latent_dim 64
-```
-With the afresh training, results can be obtained by running
-
-```train_all
-python train.py --save 'Results/MNIST_16' --latent_dim 16
-python train.py --save 'Results/MNIST_32' --latent_dim 16
-python train.py --save 'Results/MNIST_64' --latent_dim 16
-```
-
+All results for classification on MNIST and Kuzushiji-MNIST are saved in 'classification/Results'.
